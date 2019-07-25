@@ -35,4 +35,18 @@ public class HomeController {
 
 	        return "showCities";
 	    }
+		 
+		 @GetMapping("/")
+		 public String showWelcomePage() {
+			 return "welcome";
+		 }
+		 @GetMapping("LoginOrRegister")
+		 public String showLoginOrRegisterForm() {
+			 return "LoginOrRegister";
+		 }
+		 @GetMapping("home")
+		 public String showHome() {
+			 return "home";
+		 }
+		 
 }
