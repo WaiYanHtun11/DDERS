@@ -27,6 +27,14 @@ public class UserService implements IUserService{
 	}
 
 
+	@Override
+	public boolean addUser(User user) {
+		// TODO Auto-generated method stub
+		repository.save(user);
+		return false;
+	}
+
+
 
 	
 }

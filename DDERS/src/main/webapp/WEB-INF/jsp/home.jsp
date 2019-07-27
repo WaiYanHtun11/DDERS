@@ -732,7 +732,7 @@ margin-top: 20px;
       	<div class="row data">
       		 <p><span class="glyphicon glyphicon-phone"></span>&nbsp;&nbsp;&nbsp;&nbsp;09459816283</p>
       		  <p><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;&nbsp;&nbsp;myamya@gmail.com</p>
-      		   <p><span class="glyphicon  glyphicon-send"></span>&nbsp;&nbsp;&nbsp;&nbsp;09459816283</p>
+      		   <p><span class="glyphicon  glyphicon-send"></span>&nbsp;&nbsp;&nbsp;&nbsp;Mandalay,80th street</p>
       		    <p><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;&nbsp;
 
       		    <span class="fa fa-star checked"></span>

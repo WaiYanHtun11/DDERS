@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -171,12 +172,12 @@ margin-left: 60px;
    	<div class="row">
    		<div class="col-sm-6 ">
    			<div id="loginform">
-   				<form class="formstyle">
+   				<form class="formstyle" method="post" action="login">
    			<table>
    				<tr> <th><h2>LOG IN</h2></th></tr>
-   				<tr><td> <input type="text" name="name" placeholder="Name"></td></tr>
-   			    <tr><td><input type="password" name="name" placeholder="Password"> </td></tr>
-   			     <tr><td><input type="submit"  value="submit" onclick=form.submit();"location='find nearest doctor.html'"></td></tr>
+   				<tr><td> <input type="text" name="phoneno" placeholder="Name"></td></tr>
+   			    <tr><td><input type="password" name="password" placeholder="Password"> </td></tr>
+   			     <tr><td><input type="submit"  value="Login" onclick=form.submit()></td></tr>
    			     
    			</table>
    		</form>
@@ -185,12 +186,17 @@ margin-left: 60px;
 
 
   <div id="registerform">
-  	<form class="formstyle">
+  	<form class="formstyle" method="post" action="register">
    			<table>
    				<tr> <th><h2>REGISTER</h2></th></tr>
-   				<tr><td> <input type="text" name="name" placeholder="Name"></td></tr>
-   			    <tr><td><input type="password" name="name" placeholder="Password"> </td></tr>
-   			     <tr><td> <input type="submit"  value="Register"></td></tr>
+   				<tr><td> <input type="text" name="name" placeholder="Name"/></td></tr>
+   					<tr><td> <input type="text" name="phoneno" placeholder="Phone Number"/></td></tr>
+   			    <tr><td><input type="password" name="password" placeholder="Password"/> </td></tr>
+   			       <tr><td><input type="password" name="repassword" placeholder="Retype Password"/> </td></tr>
+   			        <tr><td> <input type="text" name="clinic_name" placeholder="Clinic Name"/></td></tr>
+   			       <tr><td> <input type="text" name="address" placeholder="Address"/></td></tr>
+   			       <tr><td> <input type="text" name="email" placeholder="email"/></td></tr>
+   			     <tr><td></a><input type="submit"  value="Register"></td></tr>
    			     
    			</table>
    		</form>

@@ -1,5 +1,6 @@
 package com.group1.dders.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,15 +12,16 @@ import javax.persistence.Table;
 public class User {
 	public User() {}
 	
-	public User(Long id, String name, String phoneno, String password) {
+	public User(String name, String phoneno, String password) {
 		super();
-		this.id = id;
+
 		this.name = name;
 		this.phoneno = phoneno;
 		this.password = password;
 	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="id")
 	private Long id;
 	
 	public Long getId() {
@@ -95,8 +97,11 @@ public class User {
 			return false;
 		return true;
 	}
+	@Column(name="name")
 	private String name;
+	@Column(name="phoneno")
 	private String phoneno;
+	@Column(name="password")
 	private String password;
 
 	@Override

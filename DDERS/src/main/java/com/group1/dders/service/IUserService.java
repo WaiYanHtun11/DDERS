@@ -8,4 +8,6 @@ import com.group1.dders.model.User;
 public interface IUserService {
 	List<User> findAll();
 	Optional<User> retriveUser(Long id);
+
+	boolean addUser(User user);
 }
