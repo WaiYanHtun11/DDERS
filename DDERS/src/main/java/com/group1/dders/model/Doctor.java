@@ -16,14 +16,21 @@ public class Doctor {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Doctor(String name, String phoneno, String email, String clinic_name, String address) {
+
+
+	public Doctor(String name, String phoneno, String email, String password,
+			String clinic_name, String address,String photo) {
 		super();
 		this.name = name;
 		this.phoneno = phoneno;
+		this.password = password;
 		this.email = email;
 		this.clinic_name = clinic_name;
 		this.address = address;
+		this.photo = photo;
 	}
+
+
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -32,12 +39,17 @@ public class Doctor {
 	private String name;
 	@Column(name="phoneno")
 	private String phoneno;
+	
 	@Column(name="email")
 	private String email;
+	@Column(name="password")
+	private String password;
 	@Column(name="clinic_name")
 	private String clinic_name;
 	@Column(name="address")
 	private String address;
+	@Column(name="photo")
+	private String photo;
 	public long getId() {
 		return id;
 	}
@@ -74,10 +86,30 @@ public class Doctor {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	@Override
 	public String toString() {
 		return "Doctor [id=" + id + ", name=" + name + ", phoneno=" + phoneno + ", email=" + email + ", clinic_name="
 				+ clinic_name + ", address=" + address + "]";
+	}
+
+
+
+	public String getPhoto() {
+		return photo;
+	}
+
+
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
 	}
 	
 

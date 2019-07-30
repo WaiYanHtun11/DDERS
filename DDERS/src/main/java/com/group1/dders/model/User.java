@@ -12,12 +12,13 @@ import javax.persistence.Table;
 public class User {
 	public User() {}
 	
-	public User(String name, String phoneno, String password) {
+	public User(String name, String phoneno, String password,String photo) {
 		super();
 
 		this.name = name;
 		this.phoneno = phoneno;
 		this.password = password;
+		this.photo = photo;
 	}
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -66,6 +67,14 @@ public class User {
 		result = prime * result + ((phoneno == null) ? 0 : phoneno.hashCode());
 		return result;
 	}
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -103,6 +112,8 @@ public class User {
 	private String phoneno;
 	@Column(name="password")
 	private String password;
+	@Column(name="photo")
+	private String photo;
 
 	@Override
 	public String toString() {

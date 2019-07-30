@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html class="hello">
 <head>
@@ -14,6 +15,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/styleforfindnearestdoctor.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	  <script>
+	
 		$(document).ready(function(){
 			
 			
@@ -27,8 +29,8 @@
             $(".audio").hide();
             $("#righthandsidenoanimation").hide();
 
-
-
+			
+			
 			$("#matches").click(function(){
 				$(".matchesform").hide();
 				$(".tablediv").hide();
@@ -192,7 +194,11 @@ $("#righthandsidenoanimation").hide();
 			});
 		
 		});
+
+	
+
 	</script>
+	
   
   <style type="text/css">
   	
@@ -554,8 +560,8 @@ margin-top: 20px;
 			<div class="col-sm-4 box1">
 				<div class="row box3">
 					
-					<img class="profile" src="image/pf.png">
-					<h2 class="headingh2">MY PROFILE</h2>
+					<img class="profile" src="image/${profile.getPhoto()}">
+					<h2 class="headingh2">${profile.getName()}</h2>${ID}
 
 
 				    </div>
@@ -578,44 +584,30 @@ margin-top: 20px;
                      <h2 >Get finding</h2>
                      <h4 >empty list</h4>
 					</div>
-
-
-
 					<div class="tablediv">
 					<div class="table matchtable" >
 						<p style=""></p>
 						<table>
-							<tr class="table-row1 rowbottom1" data-href="#">
-								<td> <img src="image/1.png" > </td><td>Kay thi kyaw<br>6MILE AWAY</td>
+						<c:forEach items="${doctors}" var="doc">
+						
+							<tr class="table-row1 rowbottom1" data-href="#" onclick="test(${doc.id},
+							'${doc.name}','${doc.phoneno}','${doc.email}','${doc.clinic_name}','${doc.address}','${doc.photo}')">
+								<td><img src="image/${doc.photo}"> </td><td>${doc.name}<br>6MILE AWAY</td>
 							</tr>
-							<tr class="table-row2 rowbottom1" data-href="#">
-								<td> <img src="image/1.png" > </td><td>Thet Linn Latt<br>7 MILES AWAY</td>
-							</tr>
-							<tr class="table-row3 rowbottom1" data-href="#">
-								<td> <img src="image/1.png" > </td><td>Khin Saw HNin<br> 11 MILES AWAY</td>
-							</tr>
-							<tr class="table-row4 rowbottom1" data-href="#">
-								<td> <img src="image/1.png"> </td><td>Poe phyu thae<br> 12 MILES AWAY</td>
-							</tr>
+						</c:forEach>
+						
+							
 						</table>
 					</div>
 				</div>
 				<!--BLOG TABLE STYLE-->
 				<div id="blogtablediv">
 					<div class="table blogtable">
-					<table>
+					<table>	<c:forEach items="${articles}" var="a">
 							<tr class="blog-row1 rowbottom2" data-href="#">
-								<td>THE PROBLEM OF MENTAL DISORDER</td>
+								<td>${a.getTitle()}</td>
 							</tr>
-							<tr class="rowbottom2 data-href="#">
-								<td> THE PROBLEM OF MENTAL DISORDER</td>
-							</tr>
-							<tr class="rowbottom2" data-href="#">
-								<td> THE PROBLEM OF MENTAL DISORDER</td>
-							</tr>
-							<tr class="rowbottom2" data-href="#">
-								<td> THE PROBLEM OF MENTAL DISORDER</td>
-							</tr>
+							</c:forEach>
 						</table>
 					</div>
 				</div>
@@ -721,27 +713,43 @@ margin-top: 20px;
 <!----start of doctorprofile-->
 <div  id="doctorprofile">
 	<div class="row">
-	<h2 class="doctorh2">DR . MYA MYA</h2>
+	<h2 class="doctorh2" id="dp_Name">DR .<span id="d_name">Someone</span></h2>
 </div>
-      	<div class="row doctorprofile">
+      	<div class="row doctorprofile" id="d_photo">
       		
       		
       		<img src="image/1.png" id="profileimage"  >
       	
       	</div>
       	<div class="row data">
-      		 <p><span class="glyphicon glyphicon-phone"></span>&nbsp;&nbsp;&nbsp;&nbsp;09459816283</p>
-      		  <p><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;&nbsp;&nbsp;myamya@gmail.com</p>
-      		   <p><span class="glyphicon  glyphicon-send"></span>&nbsp;&nbsp;&nbsp;&nbsp;Mandalay,80th street</p>
+      		 <p><span class="glyphicon glyphicon-phone"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="d_phoneno">09442367992</span></p>
+      		  <p><span class="glyphicon glyphicon-envelope"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="d_email">someone@gmail.com</span></p>
+      		   <p><span class="glyphicon  glyphicon-send"></span>&nbsp;&nbsp;&nbsp;&nbsp;<span id="d_address">mandalay</span></p>
       		    <p><span class="glyphicon glyphicon-comment"></span>&nbsp;&nbsp;&nbsp;
 
-      		    <span class="fa fa-star checked"></span>
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star checked"></span>
-				<span class="fa fa-star"></span>
-				<span class="fa fa-star"></span></p>
+      		    <span class="fa fa-star checked" id="s3"></span>
+				<span class="fa fa-star checked" id="s2"></span>
+				<span class="fa fa-star checked" id="s3"></span>
+				<span class="fa fa-star" id="s4"></span>
+				<span class="fa fa-star" id ="s5"></span></p>
 
-      	</div>
+      	<script>
+    	function test(id,name,phoneno,email,clinic_name,address,photo){
+   		 //Some Method to assign values to doctor's profile
+		
+   			 var image = document.getElementById("profileimage");
+   		 	image.src = "image/"+photo;
+   			document.getElementById("d_name").innerHTML = name;
+   		    document.getElementById("d_phoneno").innerHTML = phoneno;
+   		    document.getElementById("d_email").innerHTML = email;
+   		    document.getElementById("d_address").innerHTML = address;
+   		
+   		    
+   		}
+    		var star4 = document.getElementById("s4");
+    		star4.checked;
+      		
+      	</script>
       	<div class="row doctorprofilethirdrow" >
       		<div class="col-sm-6">
       		<a href="#" id="givereview"><p><span class="glyphicon glyphicon-chevron-left" id="givereview"></span>GIVE REVIEW</p></a>

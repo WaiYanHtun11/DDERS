@@ -13,12 +13,7 @@ public class UserService implements IUserService{
 	@Autowired
 	private UserRepository repository;
 
-	@Override
-	public List<User> findAll() {
-		// TODO Auto-generated method stub
-		return (List<User>)repository.findAll();
-	}
-
+	
 	@Override
 	public Optional<User> retriveUser(Long id) {
 		// TODO Auto-generated method stub
@@ -32,6 +27,13 @@ public class UserService implements IUserService{
 		// TODO Auto-generated method stub
 		repository.save(user);
 		return false;
+	}
+
+
+	@Override
+	public List<User> RetrieveAllUsers() {
+		// TODO Auto-generated method stub
+		return (List<User>)repository.findAll();
 	}
 
 

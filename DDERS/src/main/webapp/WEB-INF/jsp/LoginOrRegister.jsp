@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,32 +6,41 @@
 	
 		<link rel="stylesheet" type="text/css" href="style.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-       <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
-       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> 
 </head>
 <script type="text/javascript">
 	
 
 $(document).ready(function(){
 
-$("#registerform").hide();
+$("#registerformfordoctor").hide();
+$("#registerformforuser").hide();
 $("#loginform").hide();
 $("#loginform").show("explode");
 
 $("#loginbutton").click(function(){
-$("#registerform").hide();
+$("#registerformfordoctor").hide();
+$("#registerformforuser").hide();
 $("#loginform").show("explode");
 
 });
 
 
-$("#registerbutton").click(function(){
+$("#fordoctor").click(function(){
 $("#loginform").hide();
-$("#registerform").show("explode");
+$("#registerformforuser").hide();
+$("#registerformfordoctor").show("explode");
 });
 
+$("#foruser").click(function(){
+$("#loginform").hide();
+
+$("#registerformfordoctor").hide();
+$("#registerformforuser").show("explode");
+});
 	});
 
 </script>
@@ -140,7 +148,7 @@ button{
      
 
 }
-#registerform table h2{
+#registerformfordoctor,#registerformforuser table h2{
 margin-left: 60px;
 }
 .formstyle input[type="submit"]{
@@ -153,7 +161,13 @@ margin-left: 60px;
 	background-color: #fff;
 	color:#8bc8db;
 }
-	
+.dropdown ul li a{
+	color:#8bc8db;
+}
+.dropdown ul li a:hover,.dropdown ul li a:active{
+	background-color: #8bc8db;
+	color:#fff;
+}	
 </style>
 <body >
    <div class="container-fluid">
@@ -163,7 +177,18 @@ margin-left: 60px;
               <h1>FIND  DOCTOR</h1>
    			<ul>
    				<li><button id="loginbutton">Login</button></li>
-                <li><button id="registerbutton"> Register</button></li>
+                <li> 
+                	<div class="dropdown">
+  <button  class="btn  dropdown-toggle" type="button" data-toggle="dropdown">Register
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu">
+    <li><a href="#" id="fordoctor">Doctor</a></li>
+    <li><a href="#" id="foruser">User</a></li>
+  </ul>
+</div> 
+
+
+                </li>
    			</ul>
    			
    		</nav>
@@ -175,9 +200,10 @@ margin-left: 60px;
    				<form class="formstyle" method="post" action="login">
    			<table>
    				<tr> <th><h2>LOG IN</h2></th></tr>
-   				<tr><td> <input type="text" name="phoneno" placeholder="Name"></td></tr>
-   			    <tr><td><input type="password" name="password" placeholder="Password"> </td></tr>
-   			     <tr><td><input type="submit"  value="Login" onclick=form.submit()></td></tr>
+   				<tr><td> <input type="text" name="phno_mail" placeholder="Phone Number or email" required></td></tr>
+   			    <tr><td><input type="password" name="password" placeholder="Password" required> </td></tr>
+   			     <tr><td><input type="submit" name="btn" value="Login" required ></td></tr>
+   			      <tr><td><h5 style="color:red">${Message}</h5></td></tr>
    			     
    			</table>
    		</form>
@@ -185,22 +211,40 @@ margin-left: 60px;
   
 
 
-  <div id="registerform">
-  	<form class="formstyle" method="post" action="register">
+  <div id="registerformfordoctor">
+  	<form class="formstyle" method="post" action="doctorRegister" enctype="multipart/form-data">
    			<table>
    				<tr> <th><h2>REGISTER</h2></th></tr>
-   				<tr><td> <input type="text" name="name" placeholder="Name"/></td></tr>
-   					<tr><td> <input type="text" name="phoneno" placeholder="Phone Number"/></td></tr>
-   			    <tr><td><input type="password" name="password" placeholder="Password"/> </td></tr>
-   			       <tr><td><input type="password" name="repassword" placeholder="Retype Password"/> </td></tr>
-   			        <tr><td> <input type="text" name="clinic_name" placeholder="Clinic Name"/></td></tr>
-   			       <tr><td> <input type="text" name="address" placeholder="Address"/></td></tr>
-   			       <tr><td> <input type="text" name="email" placeholder="email"/></td></tr>
-   			     <tr><td></a><input type="submit"  value="Register"></td></tr>
+   				<tr><td> <input type="text" name="name" placeholder="Name.." required></td></tr>
+   				<tr><td><input type="text" name="phoneno" placeholder="Phone No.." required>
+   				<tr><td><input type="password" name="password" placeholder="Password.." required> </td></tr>
+   				<tr><td><input type="password" name="repassword" placeholder="Retype Password.." required></td></tr>
+   			    <tr><td><input type="email" name="email" placeholder="Mail.." required></td></tr>
+   			    <tr><td><input type="text" name="address" placeholder="Address..." required></td></tr>
+   			    <tr><td><input type="text" name="clinic_name" placeholder="Clinic Name.." required></td></tr>
+   			     <tr><td><input type="submit" name="btn" value="Register" required></td></tr>
    			     
    			</table>
    		</form>
    			</div>
+
+<div id="registerformforuser">
+  	<form class="formstyle" method="post" action="userRegister">
+   			<table>
+   				<tr> <th><h2>REGISTER</h2></th></tr>
+   				<tr><td> <input type="text" name="name" placeholder="Name" required></td></tr>
+   				  <tr><td><input type="text" name="phoneno" placeholder="Phone No" required> </td></tr>
+   			    <tr><td><input type="password" name="password" placeholder="Password" required> </td></tr>
+   			      <tr><td><input type="password" name="repassword" placeholder="Retype Password" required> </td></tr>
+   			     <tr><td><input type="submit" name="btn" value="Register" required></td></tr>
+   			     
+   			</table>
+   		</form>
+   			</div>
+
+
+
+
    			
    		</div>
    		<div class="col-sm-6 image">
